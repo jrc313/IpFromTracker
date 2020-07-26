@@ -1,0 +1,29 @@
+{
+  "name": "IpFromTracker",
+  "description": "Plugin which allows the visitors IP address to be passed via the JS tracker",
+  "version": "1.0.0",
+  "theme": false,
+  "require": {
+    "piwik": ">=3.0.0-b1,<4.0.0-b1"
+  },
+  "authors": [
+    {
+      "name": "James Corbett",
+      "email": "james@jrc313.com",
+      "homepage": ""
+    }
+  ],
+  "support": {
+	    "email": "",
+	    "issues": "",
+	    "forum": "",
+	    "irc": "",
+	    "wiki": "",
+	    "source": "",
+	    "docs": "",
+	    "rss": ""
+  },
+  "homepage": "",
+  "license": "MIT",
+  "keywords": []
+}
