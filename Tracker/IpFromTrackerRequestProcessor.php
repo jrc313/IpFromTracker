@@ -18,13 +18,10 @@ class IpFromTrackerRequestProcessor extends RequestProcessor
         $params = $request->getParams();
         if (!isset($params["ip"]))
         {
-            log::debug("IP parameter does not exist");
             return;
         }
 
         $ip = $params["ip"];
-        log::debug("Got IP: %s", $ip);
-
         if (filter_var($ip, FILTER_VALIDATE_IP))
         {
             $this->setIpInHeaders($ip);
@@ -38,17 +35,18 @@ class IpFromTrackerRequestProcessor extends RequestProcessor
     private function setIpInHeaders($ip)
     {
         $general = Config::getInstance()->General;
-        $clientHeaders = @$general['proxy_client_headers'];
-        if (!is_array($clientHeaders)) {
-            $clientHeaders = array();
-        }
 
         $_SERVER['REMOTE_ADDR'] = $ip;
-        foreach (@$general['proxy_client_headers'] as $proxyHeader)
-        {
-            $_SERVER[$proxyHeader] = $ip;
-        }
 
+        $clientHeaders = @$general['proxy_client_headers'];
+        if (is_array($clientHeaders))
+        {
+            foreach ($clientHeaders as $clientHeader)
+            {
+                $_SERVER[$clientHeader] = $ip;
+            }
+        }
+        
         log::debug("SERVER: %s", json_encode($_SERVER));
     }
 }
