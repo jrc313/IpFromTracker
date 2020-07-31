@@ -6,7 +6,6 @@ php_errors.log
 /bootstrap.php
 /build
 /composer.phar
-/config/config*
 /config/*.pem
 /crossdomain.xml
 /documentation
